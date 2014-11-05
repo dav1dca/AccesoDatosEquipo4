@@ -3,11 +3,6 @@ package uem.es;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
-//atributos: id, lastname (20) name (20), job,
-//regis_date, salary, commission, depNumber
-
-
 public class Employee implements java.io.Serializable {
 	private int id ;
 	private String lastname;
@@ -17,6 +12,8 @@ public class Employee implements java.io.Serializable {
 	private int salary;
 	private float commission;
 	private int depNumber;
+	
+	static final String DATE_FORMAT = "dd/MM/yyyy";
 ///////////////////////////////////////////////////////////Constructores////////////////////////////////////////////////
 	public Employee(int id, String lastname, String name, String job,
 			Date regisDate, int salary, float commission, int depNumber) {
@@ -34,7 +31,7 @@ public class Employee implements java.io.Serializable {
 	public Employee() {
 		super();
 	}
-//////////////////////////////////////////////////////setters y getters///////////////////////////////////////////////////
+//////////////////////////////////////////////////////Setters y Getters///////////////////////////////////////////////////
 	public int getId() {
 		return id;
 	}
@@ -70,32 +67,46 @@ public class Employee implements java.io.Serializable {
 	public Date getRegisDate() {
 		return regisDate;
 	}
+	//Gestion fecha
 	public void setRegisDate(String regisDate) {
-		
-		String oldstring = "2011-01-18 00:00:00.0";
-		//Date date = new SimpleDateFormat("yyyy-MM-dd").parse(oldstring);
-		//this.regisDate = date;
+		try{
+			Date date = new SimpleDateFormat(DATE_FORMAT).parse(regisDate);
+			this.regisDate = date;
+		}
+		catch (Exception e){
+			System.err.println("Error en el formato de fecha");
+			this.regisDate = new Date();
+		}
 	}
 	public int getSalary() {
 		return salary;
 	}
+	
+	//Salario no puede ser negativo
 	public void setSalary(int salary) {
+		if (salary <= 0)
+			this.salary = 0;
+		else 
 		this.salary = salary;
 	}
 	public float getCommission() {
 		return commission;
 	}
+	//Comision no puede ser negativa
 	public void setCommission(float commission) {
-		this.commission = commission;
+		if (depNumber <= 0)
+			this.commission = 0;
+		else 
+			this.commission = commission;
 	}
 	public int getDepNumber() {
 		return depNumber;
 	}
+	//DeptNumber no puede ser negativo
 	public void setDepNumber(int depNumber) {
-		this.depNumber = depNumber;
+		if (depNumber <= 0)
+			this.depNumber = 0;
+		else 
+			this.depNumber = depNumber;
 	}
-	
-	
-	
-	
 }
