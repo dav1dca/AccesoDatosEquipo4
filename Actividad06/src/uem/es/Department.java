@@ -4,13 +4,15 @@ public class Department implements java.io.Serializable {
 	
 private static long serialversionUID=1L;
 String name;
-int id;
-int head;
-public Department(){
+private int id;
+private int head;
+private public Department(){
 	
 }
 public Department(String name, int id, int head){
-	
+	this.name = name;
+	this.id = id;
+	this.head = head;
 }
 public String getName(){
 	return name;
@@ -39,6 +41,7 @@ public String toString(){
 public boolean equals(Object otherDepartament){
 	Department dep = (Department) otherDepartament;
 	if((this.id== dep.id) && (this.head== dep.head) && (this.name== dep.name));
-	return true;
+	return true
+	else return false;
 }
 }
