@@ -3,12 +3,13 @@ package uem.es;
 public class Department implements java.io.Serializable {
 	
 private static long serialversionUID=1L;
-String name;
+private String name;
 private int id;
 private int head;
-private public Department(){
+ public Department(){
 	
 }
+ 
 public Department(String name, int id, int head){
 	this.name = name;
 	this.id = id;
@@ -40,8 +41,8 @@ public String toString(){
 @Override
 public boolean equals(Object otherDepartament){
 	Department dep = (Department) otherDepartament;
-	if((this.id== dep.id) && (this.head== dep.head) && (this.name== dep.name));
-	return true
-	else return false;
+	if((this.id== dep.id) && (this.head== dep.head) && (this.name== dep.name)){
+	return true;
+	}else return false;
 }
 }
