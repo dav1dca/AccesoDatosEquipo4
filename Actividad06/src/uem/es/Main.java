@@ -9,6 +9,7 @@ public class Main {
 		EmployeeManager em = new EmployeeManager();
 		
 		em.crearFicheroPruebas();
+		em.imprimirFicheroEmployee(EmployeeManager.FICHERO_PRUEBAS);
 	}
 
 }

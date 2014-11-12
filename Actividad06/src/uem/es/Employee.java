@@ -21,7 +21,7 @@ public class Employee implements java.io.Serializable {
 ///////////////////////////////////////////////////////////Constructores////////////////////////////////////////////////
 	public Employee(int id, String lastname, String name, int job,
 			String regisDate, int salary, float commission, int depNumber) {
-		format = new SimpleDateFormat();
+		format = new SimpleDateFormat(DATE_FORMAT);
 		setId(id);
 		setLastname(lastname);
 		setName(name);
@@ -34,7 +34,7 @@ public class Employee implements java.io.Serializable {
 	}
 	
 	public Employee() {
-		format = new SimpleDateFormat();
+		format = new SimpleDateFormat(DATE_FORMAT);
 	}
 //////////////////////////////////////////////////////Setters y Getters///////////////////////////////////////////////////
 	public int getId() {
@@ -71,14 +71,14 @@ public class Employee implements java.io.Serializable {
 		this.job = job;
 	}
 	public String getRegisDate() {
-		return format.format(regisDate).toString();
+		return format.format(regisDate);
 		 
 	}
 	//Gestion fecha
 	public void setRegisDate(String regisDate) {
 		try{
-			Date date = new SimpleDateFormat(DATE_FORMAT).parse(regisDate);
-			this.regisDate = date;
+		
+			this.regisDate = new SimpleDateFormat(DATE_FORMAT).parse(regisDate);
 		}
 		catch (Exception e){
 			System.err.println("Error en el formato de fecha");
@@ -116,4 +116,15 @@ public class Employee implements java.io.Serializable {
 		else 
 			this.depNumber = depNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", lastname=" + lastname + ", name="
+				+ name + ", job=" + job + ", regisDate=" + getRegisDate()
+				+ ", salary=" + salary + ", commission=" + commission
+				+ ", depNumber=" + depNumber +"]";
+	}
+	
+	
+	
 }
