@@ -1,11 +1,13 @@
 package uem.es;
 
 public class Department implements java.io.Serializable {
+	
 	/**
 	 * @author Guillermo Valenzuela
 	 */
 	
-private static long serialversionUID=1L;
+	private static final long serialVersionUID = 772598062944144462L;
+
 private String name;
 private int id;
 private int head;
