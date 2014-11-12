@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Employee implements java.io.Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private int id ;
 	private String lastname;
 	private String name;
@@ -12,24 +14,27 @@ public class Employee implements java.io.Serializable {
 	private int salary;
 	private float commission;
 	private int depNumber;
-	
+	private SimpleDateFormat format;
 	static final String DATE_FORMAT = "dd/MM/yyyy";
+	
+	
 ///////////////////////////////////////////////////////////Constructores////////////////////////////////////////////////
 	public Employee(int id, String lastname, String name, String job,
-			Date regisDate, int salary, float commission, int depNumber) {
-		super();
-		this.id = id;
-		this.lastname = lastname;
-		this.name = name;
-		this.job = job;
-		this.regisDate = regisDate;
-		this.salary = salary;
-		this.commission = commission;
-		this.depNumber = depNumber;
+			String regisDate, int salary, float commission, int depNumber) {
+		format = new SimpleDateFormat();
+		setId(id);
+		setLastname(lastname);
+		setName(name);
+		setJob(job);
+		setRegisDate(regisDate);
+		setSalary(salary);
+		setCommission(commission);
+		setDepNumber(depNumber);
+		
 	}
 	
 	public Employee() {
-		super();
+		format = new SimpleDateFormat();
 	}
 //////////////////////////////////////////////////////Setters y Getters///////////////////////////////////////////////////
 	public int getId() {
@@ -42,6 +47,7 @@ public class Employee implements java.io.Serializable {
 	public String getLastname() {
 		return lastname;
 	}
+	
 	public void setLastname(String lastname) {
 		if (lastname.length()>20)
 			this.lastname = lastname.substring(0, 20);
@@ -64,8 +70,9 @@ public class Employee implements java.io.Serializable {
 	public void setJob(String job) {
 		this.job = job;
 	}
-	public Date getRegisDate() {
-		return regisDate;
+	public String getRegisDate() {
+		return format.format(regisDate).toString();
+		 
 	}
 	//Gestion fecha
 	public void setRegisDate(String regisDate) {
