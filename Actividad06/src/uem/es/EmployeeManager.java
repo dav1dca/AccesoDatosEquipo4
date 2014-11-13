@@ -1,10 +1,12 @@
 package uem.es;
 
+import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
@@ -12,22 +14,65 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
+
 
 public class EmployeeManager {
 
 	static final String FICHERO_PRUEBAS = "./src/resources/empleados-prueba.dat";
 	static final String FICHERO = "./src/resources/empleados.dat";
-
+	ArrayList<Employee> listaEmplea = new ArrayList<Employee>();
+	Employee emp = new Employee();
 	public void crearFicheroPruebas() {
-		ArrayList<Employee> listaEmplea = new ArrayList<Employee>();
-		Employee emp = new Employee(1, "fernández", "josé", 1, "12/11/2014",
-				1000, 0f, 1);
+		
+		int id ;
+	     String lastname;
+		 String name;
+		 int job;
+		 Date regisDate;
+		 int salary;
+		 float commission;
+		 int depNumber;
+		 SimpleDateFormat format;
+		 String DATE_FORMAT = "dd/MM/yyyy";
+		 String salir;
+		 // scaner salir
+		 Scanner sal = new Scanner(System.in);
+		 // scaner de las partes del empleado.
+		 Scanner sID = new Scanner(System.in);
+		 Scanner sLast = new Scanner(System.in);
+		 Scanner sName = new Scanner(System.in);
+		 Scanner sJob = new Scanner(System.in);
+		 Scanner sRegiD = new Scanner(System.in);
+		 Scanner sSala = new Scanner(System.in);
+		 Scanner sCom = new Scanner(System.in);
+		 Scanner sDep = new Scanner(System.in);
+		 
+		 
+		 do{
+		 System.out.println("Ve estribiendo el contenido del empleado");
+		 System.out.println("Id del Empleado: ");
+		 id = sID.nextInt();
+		 System.out.println("Apellido del Empleado: ");
+		 lastname = sLast.nextLine();
+		 System.out.println("Nombre del Empleado");
+		 name = sName.nextLine();
+		 System.out.println("Introduce el trabajo");
+		 job = sJob.nextInt();
+		 System.out.println("Fecha de registro dd/MM/yyyy");
+		 
+		 System.out.println("Introduce el salario");
+		 salary = sSala.nextInt();
+		 System.out.println("Introduce la comision");
+		 commission = sCom.nextFloat();
+		 System.out.println("Introduce el departamento");
+		 depNumber = sDep.nextInt();
+		 System.out.println("Si quieres salir escribe 'fin' de lo contrario pulsa intro");
+		 salir = sal.next();
+		 
+		emp = new Employee(id,lastname,name,job,"15/12/2014",salary,commission,depNumber);
 		listaEmplea.add(emp);
-		emp = new Employee(2, "Perez", "Juan", 2, "15/12/2014", 1200, 1, 2);
-		listaEmplea.add(emp);
-		emp = new Employee(2, "Gonzalez", "Maria", 2, "15/12/2014", 3000, 100,
-				1);
-		listaEmplea.add(emp);
+		 }while(salir == "n");
 		ObjectOutputStream streamOut = null;
 		try {
 			streamOut = new ObjectOutputStream(new FileOutputStream(
@@ -90,21 +135,7 @@ public class EmployeeManager {
 		}
 	
 		
-	}
-	public void introducirEmpleado(){
-	     int id ;
-	     String lastname;
-		 String name;
-		 int job;
-		 Date regisDate;
-		 int salary;
-		 float commission;
-		 int depNumber;
-		 SimpleDateFormat format;
-		 String DATE_FORMAT = "dd/MM/yyyy";
-		 
-		 Scanner scan = new Scanner(System.in);
-		 
+	
 		 
 	}
 	
