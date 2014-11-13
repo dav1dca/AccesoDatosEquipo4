@@ -10,6 +10,7 @@ public class Main {
 		
 		em.crearFicheroPruebas();
 		em.imprimirFicheroEmployee(EmployeeManager.FICHERO_PRUEBAS);
+		
 	}
 
 }

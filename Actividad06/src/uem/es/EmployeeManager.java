@@ -7,13 +7,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
 
 
 public class EmployeeManager {
 
-	static final String FICHERO_PRUEBAS = "./resources/empleados-prueba.dat";
-	static final String FICHERO = "./resources/empleados.dat";
+	static final String FICHERO_PRUEBAS = "./src/resources/empleados-prueba.dat";
+	static final String FICHERO = "./src/resources/empleados.dat";
 
 	public void crearFicheroPruebas() {
 		ArrayList<Employee> listaEmplea = new ArrayList<Employee>();
@@ -88,4 +91,20 @@ public class EmployeeManager {
 	
 		
 	}
+	public void introducirEmpleado(){
+	     int id ;
+	     String lastname;
+		 String name;
+		 int job;
+		 Date regisDate;
+		 int salary;
+		 float commission;
+		 int depNumber;
+		 SimpleDateFormat format;
+		 String DATE_FORMAT = "dd/MM/yyyy";
+		 
+		 Scanner scan = new Scanner(System.in);
+		 
+	}
+	
 }
