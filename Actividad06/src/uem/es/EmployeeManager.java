@@ -81,7 +81,7 @@ public class EmployeeManager {
 				streamEntrada.close();
 			result = true;
 		}catch(IOException | ClassNotFoundException excep){
-			System.out.println("ERROR reading Department: "+excep.getMessage());
+			System.out.println("ERROR de lectura del departamento: "+excep.getMessage());
 			result = false;
 		}
 		return result;
